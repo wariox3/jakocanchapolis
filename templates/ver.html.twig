@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block content %}
+    {{ form_start(form, { 'attr': {'class': 'form-horizontal'} }) }}
+
+    {{ form_rest(form) }}
+    {{ form_end(form) }}
+        <table class="table table-condensed table-bordered table-hover mb-none">
+            <thead>
+            <tr>
+                <th>Id</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for arReserva in arReservas %}
+                <tr>
+                    <td>{{ arReserva.codigo_reserva }}</td>
+                    <td>{{ arReserva.fecha_desde | date('H:i') }}</td>
+                    <td>{{ arReserva.fecha_hasta | date('H:i') }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+{% endblock %}
